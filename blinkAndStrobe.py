@@ -39,6 +39,7 @@ p3.start(0)
 
 pins_list = [p1, p2, p3]
 num_pins  = len(pins_list)
+cleaned_up = False
 
 try:
     for loops in range(50):
@@ -58,6 +59,9 @@ try:
 except KeyboardInterrupt: 
     print("\nCleaning up ...")
     GPIO.cleanup()
+    cleaned_up = True
 
-GPIO.cleanup()
+if not cleaned_up:
+    GPIO.cleanup()
+
 print("DONE")
